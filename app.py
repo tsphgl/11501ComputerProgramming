@@ -6,5 +6,19 @@ app = Flask(__name__)
 def home():
     return "Hello, Docker Flask!"
 
+@app.route("/new")
+def first():
+    return """<html>
+                <head>
+                    <title>首頁</title>
+                </head>
+                <body>
+                    <h1>歡迎來到我的網站</h1>
+                    <h2>這是我的第一次實作<h2>
+                    <p>這是用 Flask 直接回傳 HTML</p>
+
+                    <a href="/">前往 </a>
+                </body>
+            </html>"""
 if __name__ == "__main__":
-    app.run(host="0.0.0.0", port=5000)
+    app.run(host="0.0.0.0", port=5000, debug=True)
