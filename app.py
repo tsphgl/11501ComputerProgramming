@@ -1,24 +1,18 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
 @app.route("/")
 def home():
-    return "Hello, Docker Flask!"
+    return render_template("project.html")
 
 @app.route("/new")
 def first():
-    return """<html>
-                <head>
-                    <title>首頁</title>
-                </head>
-                <body>
-                    <h1>歡迎來到我的網站</h1>
-                    <h2>這是我的第一次實作<h2>
-                    <p>這是用 Flask 直接回傳 HTML</p>
+    return render_template("index.html")
 
-                    <a href="/">前往 </a>
-                </body>
-            </html>"""
+@app.route("/html_tags")
+def html_tags():
+    return render_template("html_tags.html")
+
 if __name__ == "__main__":
     app.run(host="0.0.0.0", port=5000, debug=True)
