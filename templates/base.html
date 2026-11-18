@@ -1,0 +1,10 @@
+<header>
+    <nav>
+        <a href="{{ url_for('home') }}">首頁</a>
+        <a href="{{ url_for('todo') }}">待做事項</a>
+        <a href="{{ url_for('html_tags') }}">教學頁</a>
+    </nav>
+</header>
+<hr>
+
+{% block content %}{% endblock %}

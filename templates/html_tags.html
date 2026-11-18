@@ -101,11 +101,7 @@
   </style>
 </head>
 <body>
-  <header>
-    <a href="/new">前往實做頁</a>
-    <br>
-    <a href="/html_tags">前往教學頁</a>
-  </header>
+  {% block content %}{% endblock %}
   <main>
     <a href="/">回到首頁</a>
     <section id="text">
@@ -345,5 +341,6 @@
   <footer>
     <p>HTML 標籤總覽頁示範完成</p>
   </footer>
+  {% endblock %}
 </body>
 </html>
