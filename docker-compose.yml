@@ -8,3 +8,28 @@ services:
       - .:/app
     environment:
       - FLASK_ENV=development
+      - DATABASE_URL=postgresql+psycopg2://flask_user:flask_password@db:5432/flask_mvp
+    depends_on:
+      db:
+        condition: service_healthy
+
+  db:
+    image: postgres:17-alpine
+    container_name: postgres-db
+    restart: unless-stopped
+    ports:
+      - "5432:5432"
+    environment:
+      - POSTGRES_USER=flask_user
+      - POSTGRES_PASSWORD=flask_password
+      - POSTGRES_DB=flask_mvp
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U flask_user -d flask_mvp"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  postgres_data:
